@@ -1,0 +1,13 @@
+{
+  "rules": {
+   ".read": "auth.uid != null",
+   "users": {
+      "$uid": {
+        ".write": "$uid == auth.uid"       
+      }
+      },
+    "boards": {
+      ".write": "auth.uid != null"
+    }
+  }
+}

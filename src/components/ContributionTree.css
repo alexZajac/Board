@@ -1,0 +1,61 @@
+.svg-container{
+font-family: 'Circular-bold';
+background: black;
+border-radius: 20px;
+}
+
+#helpTreeText{
+    position: absolute;
+    top:1.4%;
+    color: black;
+    right:9%;
+    padding: 5px;
+    font-size: 13px;
+    border-radius: 10px;
+    width:265px;
+    box-shadow: 0 4px 10px #000;
+    text-align: center;
+    transition: all ease-in-out 0.5s;
+    cursor: default;
+}
+
+#helpTreeText:hover{
+    color: white;
+    background: black;
+}
+
+#titleTree{
+    font-family: 'Circular-black';
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+#backToYourBoard{
+    height: 34px; 
+    width: auto;
+    position: absolute;
+    top:4%;
+    left:2%;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+#backToYourBoard:hover{
+    transform: translateX(-8px);
+}
+
+#helpTree{
+    width:50px;
+    height: auto;
+    position: absolute;
+    right: 2%;
+    top:3%;
+    cursor: pointer;
+    transition: all ease-in-out 2s;
+}
+
+#helpTree:hover{
+    transform: rotate(360deg);
+}

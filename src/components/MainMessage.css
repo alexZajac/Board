@@ -1,0 +1,43 @@
+@font-face{
+    font-family: circular-black;
+    src: url(./fonts/CircularStd-Black.woff);
+}
+
+@font-face{
+    font-family: circular-bold;
+    src: url(./fonts/CircularStd-Bold.woff);
+}
+
+@font-face{
+    font-family: circular-medium;
+    src: url(./fonts/CircularStd-Medium.woff);
+}
+
+@font-face{
+    font-family: circular-book;
+    src: url(./fonts/CircularStd-Book.woff);
+}
+
+.wrapper-MainMsg {
+    height:75%;
+    width: 45vw;
+    text-align: center;
+    top:10%;
+    margin:0 auto;
+}
+
+h1{
+    font-family: 'circular-medium'!important;
+}
+
+p{
+    font-family: 'circular-book';
+    font-size: 20px;
+    color: rgb(82, 82, 82);
+}
+
+img{
+    height:150px;
+    width: auto;
+    margin: 0 auto;
+}

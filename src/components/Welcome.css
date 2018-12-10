@@ -1,0 +1,231 @@
+@font-face{
+    font-family: circular-black;
+    src: url(./fonts/CircularStd-Black.woff);
+}
+@font-face{
+    font-family: circular-bold;
+    src: url(./fonts/CircularStd-Bold.woff);
+}
+
+/* 
+.containerWelcome{
+    font-family:'circular-black';
+    width:100vw;
+    height:100%;
+    position:relative;
+  }
+
+  #usernameAnimation{
+    position:absolute;
+    background: linear-gradient(to right, #00ACE6,#E4F13E, #FF4CB4 );
+    -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
+    font-size:11vw;
+    width: 100%;
+    height: 250px;
+    line-height: 250px;
+    animation: username 3s;
+    animation-direction: alternate;
+    transform-origin: center;
+    margin :0 auto;
+    text-align: center;
+    top:65%;
+    left:0;
+    right:0;
+  }
+
+ 
+  #top-oval {
+    background-color: #FF4CB4;
+    width: 10vw;
+    height: 8vw;
+    border-radius: 48%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position:absolute;
+    top:28%;
+    left:43%;
+    animation: top 3s;
+    animation-direction: alternate;
+  }
+  
+  #oard{
+    position:absolute;
+    top:30%;
+    left:61%;
+    font-size:14vw;
+    animation: oard 3s;
+    animation-direction: alternate;
+  }
+  #on{
+    position:absolute;
+    top:22%;
+    left:0%;
+    font-size:18vw;
+    animation: on 3s;
+    animation-direction: alternate;
+    transform-origin: center;
+  }
+  #welcome{
+    position:absolute;
+    top:0;
+    left:25%;
+    font-size:9vw;
+    animation: welcome 3s;
+    animation-direction: alternate;
+    transform-origin: center;
+  }
+  
+  #bottom-oval {
+    background-color: #00ACE6;
+    width: 13vw;
+    opacity:0.85;
+    height: 10.5vw;
+    border-radius: 48%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position:absolute;
+    top:40%;
+    left:43%;
+    animation: bottom 3s;
+    animation-direction: alternate;
+  }
+  
+  #circle{
+    border-radius:50%;
+    width:6vw;
+    height:6vw;
+    background-color: #E4F13E;
+    bottom:0;
+    position:absolute;
+    z-index:3;
+    animation: circle 3s;
+    animation-direction: alternate;
+  }
+  
+  #small-thing{
+    width:3vw;
+    height:3vw;
+    background-color: #000000;
+    bottom:0;
+    position:absolute;
+    z-index:2;
+    animation: thing 3s;
+    animation-direction: alternate;
+  }
+  
+  @keyframes top {
+    0%,
+    10% {
+      width: 0;
+      opacity: 0;
+    }
+    10.01% {
+      opacity: 1;
+    }
+    25%,
+    30% {
+      opacity: 1;
+      width: 10vw;
+    }
+  }
+  
+  @keyframes bottom {
+    0%,
+    20% {
+      width: 0;
+      opacity: 0;
+    }
+    20.01% {
+      opacity: 1;
+    }
+    35%,
+    40% {
+      opacity: 1;
+      width: 13vw;
+    }
+  }
+  
+  @keyframes circle {
+    0%,
+    35% {
+      width: 0;
+      opacity: 0;
+    }
+    35.01% {
+      opacity: 1;
+      right: 0;
+    }
+    50%,
+    55% {
+      opacity: 1;
+      right: 7vw;
+      width: 6vw;
+    }
+  }
+  
+  @keyframes thing {
+    0%,
+    45% {
+      width: 0;
+      opacity: 0;
+    }
+    45.01% {
+      opacity: 1;
+    }
+    60%,
+    65% {
+      opacity: 1;
+      width: 3vw;
+    }
+  }
+  
+  @keyframes welcome {
+    0% {
+      transform : scale(0);
+      opacity: 0;
+    }
+    10.01% {
+      opacity: 1;
+      transform : scale(1);
+    }
+  }
+
+  @keyframes username {
+    0% {
+      transform : scale(0);
+      opacity: 0;
+    }
+    55% {
+      opacity: 0;
+      transform : scale(0);
+    }
+    70% {
+        opacity: 1;
+        transform : scale(1);
+      }
+  }
+  
+  @keyframes on {
+    0% {
+      transform : scale(0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+      transform : scale(1);
+    }
+  }
+  
+  @keyframes oard {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    55%,
+    65.01% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+*/

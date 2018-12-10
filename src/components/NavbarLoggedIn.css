@@ -1,0 +1,65 @@
+@font-face{
+    font-family: 'circular-bold';
+    src: url('./fonts/CircularStd-Bold.woff');
+}
+
+.wrapper-NavbarLoggedIn{
+    background: black;
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    z-index: 4;
+}
+
+.LeftLogoRedirect{
+    float: left;
+    height:46px;
+    width: auto;
+    position: absolute;
+    cursor: pointer;
+    top:15%;
+    left: 2%;
+}
+.RightUsernameLogOut{
+    float: right;
+    position: absolute;
+    top:15%;
+    width:300px;
+    height:auto;
+    right: 2%;
+}
+#LogoutButton{
+    font-family:'circular-bold';
+    border-radius: 50px;
+    border: solid 1px rgba(200, 200, 200,0.5);
+    width:120px;
+    height: 50px;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 50px;
+    cursor: pointer;
+    margin: 0 auto;
+    background-color:#E4F13E;
+    transition: 0.3s ease-in-out all;
+    font-size: 20px;
+    float: right;
+}
+
+#LogoutButton:hover{
+    letter-spacing: 1px;
+    color: black;
+    background-color: white;
+}
+#LogoutButton:focus{
+    outline: none;
+}
+
+#usernameNavbar{
+    float: left;
+    font-family:'circular-bold';
+    font-size: 18px;
+    width:140px;
+    height:50px;
+    line-height:50px;
+    color: white;
+}

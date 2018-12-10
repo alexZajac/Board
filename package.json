@@ -1,0 +1,38 @@
+{
+  "name": "light-board",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "animated": "^0.2.2",
+    "bootstrap": "^4.1.1",
+    "d3": "^3.5.6",
+    "draft-convert": "^2.1.4",
+    "draft-js": "^0.10.5",
+    "firebase": "^5.1.0",
+    "fuse.js": "^3.2.1",
+    "hint.css": "^2.5.0",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "particles.js": "^2.0.0",
+    "react": "^16.4.1",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.4.1",
+    "react-draggable": "^3.0.5",
+    "react-grid-layout": "^0.16.6",
+    "react-icons": "^3.0.5",
+    "react-modal": "^3.5.1",
+    "react-particles-js": "^2.2.0",
+    "react-resizable": "^1.7.5",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-select": "^2.0.0",
+    "react-transition-group": "^2.4.0",
+    "underscore": "^1.9.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
