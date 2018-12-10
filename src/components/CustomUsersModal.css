@@ -1,0 +1,72 @@
+#modal-wrapper{
+    position: absolute;
+    top:16%;
+    right:15%;
+    width:8%;
+    height:60%;
+}
+
+#btnOpenModal{
+    cursor: pointer;
+    border: none; 
+    outline: none;
+    position: absolute;
+    right:0;
+    border-radius:50%;
+    width:62%;
+    height:100%;
+    opacity:0;
+}
+
+.ReactModal__Overlay {
+    z-index: 1000;
+}
+
+.Overlay {
+    background: rgba(0,0,0,0.667);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+.Modal{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    background: #000;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #fff;
+    color:white;
+    padding:25px;
+}
+
+#closeModalBtn{
+    position: absolute;
+    top:1%;
+    right:1%;
+    border-radius: 50%;
+    width:26px;
+    height:26px;
+    background: black;
+    color:white;
+    outline: none;
+    font-size:14px;
+    border: solid 2px rgba(0,0,0,0);
+    transition: all ease-in-out 0.2s;
+    cursor:pointer;
+}
+
+#closeModalBtn:hover{
+    background:red;
+}
+
+#mainInfoModal{
+    background: white;
+    color: black;
+    border-radius: 20px;
+    padding:6px;
+}

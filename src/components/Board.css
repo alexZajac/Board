@@ -1,0 +1,129 @@
+@font-face{
+    font-family:'circular-black';
+    src:url('./fonts/CircularStd-Book.woff')
+}
+
+@font-face{
+  font-family: 'ciruclar-medium';
+  src: url('./fonts/CircularStd-Medium.woff');
+}
+
+#DashboardContainer{
+    height: 100vh;
+    width:100%;
+    background: linear-gradient(to bottom, #000, rgb(36, 22, 99));
+    position: relative;
+    overflow: auto;
+  }
+  
+.wrapper-Board{
+    top:3%;
+    width: 95%;
+    height: 95vh;
+    border-radius: 20px;
+    left: 3%;
+    position: relative;
+    box-shadow: 0 0 25px #444;
+    font-family: 'circular-book';  
+    background: linear-gradient(to bottom, white, lightgrey);
+  }
+
+  #backToBoard{
+    height: 28px; 
+    width: auto;
+    position: absolute;
+    top:7%;
+    left:1%;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+  }
+
+  #backToBoard:hover{
+    transform: translateX(-8px);
+  }
+
+.wrapper-topBoard{
+    height: 130px;
+    position: relative;
+    border-radius: 20px 20px 0 0;
+    border: 2px solid rgb(170, 170, 170);
+    background: white;
+    top:3%;
+    width:96%;
+    left:2%;
+    z-index: 1;
+  }
+
+  #nameOfBoard{
+      left:50px;
+      top:30px;
+      position: absolute; 
+      font-size: 30px;  
+      border:none;
+      outline:none;
+      color:white;
+      background: black;
+      width:330px;
+      padding: 10px;
+      border-radius:20px;
+      transform-origin: center;    
+}
+
+#numberOfPeople{
+  position: absolute;
+  left:38%;
+  top:28%;
+  font-size: 18px;
+  color:white;
+  background: #00ACE6;
+  padding: 10px;
+  border-radius: 20px 0 20px 0;
+  cursor:default;
+}
+
+#numberOfNotes{
+  position: absolute;
+  left:55%;
+  top:28%;
+  font-size: 18px;
+  color:white;
+  background: #FF4CB4;
+  padding: 10px;
+  border-radius: 0 20px 0 20px;
+  cursor:default;
+}
+
+#contributionTree{
+  position: absolute;
+  left:30%;
+  top:22%;
+  border-radius: 50%;
+  cursor:pointer;
+  width:70px;
+  height: auto;
+  border: solid 3px black; 
+  transition: all ease-in-out 0.3s;
+}
+
+#contributionTree:hover{
+  transform: scale(1.1)
+}
+
+.listOfNotes{
+    width:96%;
+    left:2%;
+    min-height:80%;
+    position: relative;
+    padding:20px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+  }
+
+.layout{
+   height:95%;
+   border: solid 2px red;
+}
+
+
+
+

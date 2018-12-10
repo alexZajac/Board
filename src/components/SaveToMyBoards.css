@@ -1,0 +1,18 @@
+#SaveToMyBoards{
+    width:11%;
+    border-radius: 20px;
+    position: absolute;
+    top:23%;
+    right:24%;
+    font-size:1.4vw;
+    text-align: center;
+    cursor: pointer;
+    transition: 300ms all ease-in-out; 
+}
+
+#SaveToMyBoards:hover{
+    letter-spacing: 1px; 
+    background: black;
+    color: white;
+    border-radius: 0px;
+}

@@ -1,0 +1,36 @@
+#changeViewMode{
+    display:flex;
+    flex-flow: row;
+    text-align: center;
+    width:12%;
+    position: absolute;
+    right:2%;
+    top:30%;
+    font-size:1.5vw;
+    color:black;
+}
+
+#canViewImage{
+    height:3vw;
+    width: auto;
+}
+
+#addPeopleImage{
+    height: 70px;
+    width: auto;
+    border-radius: 50%;
+    right:15%;
+    position: absolute;
+    transition: all ease-in-out 0.3s;
+}
+
+#addPeopleImage:hover{
+    transform: scale(1.1);
+}
+
+#viewComment{
+    line-height: 200%;
+    border-radius: 10px;
+    padding:4px;
+    background: #E4F13E;
+}

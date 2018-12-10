@@ -1,0 +1,24 @@
+.wrapper-StaticNavbar{
+    background: linear-gradient(to left, #FF4CB4, #00ACE6);
+    width: 100%;
+    height: 15vh;
+    position: relative;
+}
+
+.LeftImg{
+    float: left;
+    height:60px;
+    width: auto;
+    position: absolute;
+    top:15%;
+    left: 2%;
+}
+
+.RightImg{
+    float: right;
+    height:60px;
+    width: auto;
+    right: 2%;
+    position: absolute;
+    top:20%;
+}

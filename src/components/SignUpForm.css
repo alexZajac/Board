@@ -1,0 +1,60 @@
+@font-face{
+    font-family: circular-medium;
+    src: url(./fonts/CircularStd-Medium.woff);
+}
+
+#signup-wrapper{
+    height: 90vh;
+    width:100%;
+    margin: auto;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0px 15px 40px 0px #000000;
+    border-radius: 30px;
+    text-align: center;
+    font-family: 'circular-medium';
+    background-color: aliceblue;
+}
+
+#LoginFormWrapper{
+    background-image: url('./Images/loginimg.png');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#exampleInputEmail, #exampleInputPassword{
+    width: 350px!important;
+    text-align: center;
+    margin: 0 auto!important;
+}
+
+.labelLogin{
+    font-size: 25px;
+}
+
+#msgLogin{
+    font-size:50px;
+    color: #092735;
+}
+
+#RegisterButton{
+    width:400px!important;
+    background-color:#FF5AB6;
+    border:none;
+    transition: all ease-in-out 0.3s;
+}
+
+#RegisterButton:hover{
+    letter-spacing: 2px;
+    background-color: #092735;
+    border-radius: 40px;
+    color: #FF5AB6;
+}
+
+
+
