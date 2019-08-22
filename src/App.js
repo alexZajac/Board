@@ -98,7 +98,7 @@ export default class App extends Component {
     );
 
     return (
-      <BrowserRouter id="AppWrapper">
+      <BrowserRouter id="AppWrapper" basename={process.env.PUBLIC_URL}>
         <Switch>
           <PrivateRoute path="/" exact component={Dashboard} />
           <BoardRoute path="/board" component={Board} />

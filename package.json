@@ -5,7 +5,7 @@
   "dependencies": {
     "animated": "^0.2.2",
     "autoprefixer": "7.1.6",
-    "babel-core": "6.26.0",
+    "@babel/core": "^7.0.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
@@ -70,7 +70,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "node scripts/build.js",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -117,5 +119,6 @@
   "devDependencies": {
     "node-sass": "^4.12.0",
     "sass-loader": "^7.3.1"
-  }
+  },
+  "homepage": "https://alexzajac.github.io/Board"
 }
