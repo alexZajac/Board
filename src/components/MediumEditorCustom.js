@@ -505,7 +505,6 @@ export default class MediumEditorCustom extends React.Component {
           )
         });
       } else if (snapshot.val() === "") {
-        console.log("hye");
         this.setState({ editorState: EditorState.createEmpty() });
       }
     });

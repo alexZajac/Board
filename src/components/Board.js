@@ -148,7 +148,6 @@ export default class Board extends Component {
       if (snapshot.val()) {
         const originalLayout = JSON.parse(snapshot.val());
         const savedLayout = originalLayout["layout"];
-        console.log(savedLayout);
         this.setState({ items: savedLayout });
         //this.onLayoutChange(savedLayout);
       }
@@ -242,7 +241,6 @@ export default class Board extends Component {
           .ref("boards/")
           .once("value", snap => {
             if (snap.hasChild(this.boardId)) {
-              console.log(layout);
               this.boardRef.update({
                 layout: JSON.stringify({ layout: layout })
               });

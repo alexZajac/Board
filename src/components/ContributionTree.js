@@ -271,7 +271,6 @@ export default class ContributionTree extends Component {
   }
 
   redirect() {
-    console.log("/board/" + boardId);
     this.setState({ redirect: "/board/" + boardId });
   }
 
@@ -285,7 +284,7 @@ export default class ContributionTree extends Component {
     const styleHelp = wantHelp ? { display: "block" } : { display: "none" };
 
     if (redirect !== "") {
-      return <Redirect to={`/Board/${redirect}`} />;
+      return <Redirect to={redirect} />;
     } else
       return (
         <div>
