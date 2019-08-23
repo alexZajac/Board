@@ -231,7 +231,8 @@ export default class YourBoards extends Component {
     if (localStorage.getItem("firstConnection_" + id) === null) {
       localStorage.setItem("firstConnection_" + id, true);
     }
-    window.location = "/board/" + id;
+    this.pathRedirect = "/board/" + id;
+    this.setState({ redirect: true });
   }
 
   render() {

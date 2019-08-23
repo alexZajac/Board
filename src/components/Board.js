@@ -13,11 +13,7 @@ import _ from "lodash";
 import "./Note.css";
 import "react-resizable/css/styles.css";
 import "react-grid-layout/css/styles.css";
-
 const userId = localStorage.getItem("userId");
-const boardId = localStorage.getItem("boardId");
-const boardRef = firebase.database().ref("/boards/" + boardId);
-const notesRef = firebase.database().ref("/boards/" + boardId + "/notes");
 const colorNotes = [
   "rgba(39,11,199,1) rgba(71,12,249,1)",
   "rgba(148,24,219,1) rgba(200,26,239,1)",
@@ -62,38 +58,41 @@ export default class Board extends Component {
     this.onBreakpointChange = this.onBreakpointChange.bind(this);
     this.numberOfPeople = null;
     this.creator = null;
+
+    this.boardId = localStorage.getItem("boardId");
+    this.boardRef = firebase.database().ref("/boards/" + this.boardId);
+    this.notesRef = firebase
+      .database()
+      .ref("/boards/" + this.boardId + "/notes");
   }
 
-  componentWillMount() {
-    this.updateBoard();
-    localStorage.setItem("redirectBoardId", boardId);
-    localStorage.setItem("boardId", boardId);
+  async componentDidMount() {
+    await this.checkBoardExistence();
+    await this.updateBoard();
+    localStorage.setItem("redirectboardId", this.boardId);
+    localStorage.setItem("boardId", this.boardId);
   }
 
-  componentDidMount() {
-    this.checkBoardExistence();
-  }
-
-  checkBoardExistence() {
+  async checkBoardExistence() {
     const boardsArray = [];
-    firebase
+    await firebase
       .database()
       .ref("boards")
       .once("value", snapshot => {
         snapshot.forEach(child => {
           boardsArray.push(child.key);
         });
-        if (boardsArray === [] || !boardsArray.includes(boardId)) {
+        if (boardsArray === [] || !boardsArray.includes(this.boardId)) {
           this.setState({ boardExists: false });
         }
       });
   }
 
-  updateBoard() {
+  async updateBoard() {
     //BOARD NAME
     firebase
       .database()
-      .ref("/boards/" + boardId + "/title/")
+      .ref("/boards/" + this.boardId + "/title/")
       .on("value", snapshot => {
         this.setState(
           { boardName: snapshot.val() },
@@ -102,9 +101,9 @@ export default class Board extends Component {
       });
 
     //CREATOR
-    firebase
+    await firebase
       .database()
-      .ref("/boards/" + boardId + "/creator/")
+      .ref("/boards/" + this.boardId + "/creator/")
       .once("value", snapshot => {
         this.setState({ creator: snapshot.val() });
       });
@@ -112,7 +111,7 @@ export default class Board extends Component {
     //NBRPEOPLE
     firebase
       .database()
-      .ref("/boards/" + boardId + "/numberPeopleOnBoard/")
+      .ref("/boards/" + this.boardId + "/numberPeopleOnBoard/")
       .on("value", snapshot => {
         this.setState({ numberOfPeople: snapshot.val() });
       });
@@ -120,7 +119,7 @@ export default class Board extends Component {
     //ALLOWED
     firebase
       .database()
-      .ref("/boards/" + boardId + "/allowed/")
+      .ref("/boards/" + this.boardId + "/allowed/")
       .on("value", snapshot => {
         if (snapshot.val())
           this.setState({ allowed: snapshot.val().split(" ") || [] });
@@ -129,7 +128,7 @@ export default class Board extends Component {
     //MODE
     firebase
       .database()
-      .ref("/boards/" + boardId + "/mode")
+      .ref("/boards/" + this.boardId + "/mode")
       .on("value", snapshot => {
         this.setState({ mode: snapshot.val() });
       });
@@ -139,23 +138,26 @@ export default class Board extends Component {
       .database()
       .ref("boards")
       .on("child_removed", snapshot => {
-        if (snapshot.key === boardId) window.location = "/dashboard";
+        if (snapshot.key === this.boardId) {
+          this.redirect("/dashboard");
+        }
       });
 
     //Load Layouts
-    boardRef.child("layout").once("value", snapshot => {
+    await this.boardRef.child("layout").once("value", snapshot => {
       if (snapshot.val()) {
         const originalLayout = JSON.parse(snapshot.val());
         const savedLayout = originalLayout["layout"];
+        console.log(savedLayout);
         this.setState({ items: savedLayout });
-        this.onLayoutChange(savedLayout);
+        //this.onLayoutChange(savedLayout);
       }
       this.setState({ loading: false });
     });
 
     //NOTES
 
-    notesRef.on("child_added", snapshot => {
+    this.notesRef.on("child_added", snapshot => {
       let previousNotes = this.state.ListOfNotes;
       let previousItems = this.state.items;
 
@@ -173,21 +175,21 @@ export default class Board extends Component {
         previousNotes = _.uniqBy(previousNotes, "id"); //making sure notes are unique by id
         this.setState({
           ListOfNotes: previousNotes,
-          numberOfNotes: previousNotes.length,
-          items: previousItems.concat({
-            i: snapshot.key,
-            x: 0,
-            y: 0,
-            minW: 3,
-            minH: 5,
-            maxW: 12,
-            w: 3,
-            h: 5
-          })
+          numberOfNotes: previousNotes.length
+          //   items: previousItems.concat({
+          //     i: snapshot.key,
+          //     x: 0,
+          //     y: 0,
+          //     minW: 3,
+          //     minH: 5,
+          //     maxW: 12,
+          //     w: 3,
+          //     h: 5
+          //   })
         });
       }
     });
-    notesRef.on("child_removed", snapshot => {
+    this.notesRef.on("child_removed", snapshot => {
       let previousNotes = this.state.ListOfNotes;
       let previousItems = this.state.items;
       previousNotes = previousNotes.filter(note => note.id !== snapshot.key);
@@ -220,7 +222,7 @@ export default class Board extends Component {
 
   createNote() {
     const date = this.getCurrentDate();
-    notesRef.push({
+    this.notesRef.push({
       creator: userId,
       upvotes: 0,
       date: date,
@@ -233,17 +235,23 @@ export default class Board extends Component {
 
   onLayoutChange(layout) {
     if (layout !== this.state.layout) {
-      firebase
-        .database()
-        .ref("boards/")
-        .once("value", snap => {
-          if (snap.hasChild(boardId)) {
-            boardRef.update({
-              layout: JSON.stringify({ ["layout"]: layout })
-            });
-            this.setState({ layout: layout });
-          }
-        });
+      // update
+      if (this.state.ListOfNotes.length === layout.length) {
+        firebase
+          .database()
+          .ref("boards/")
+          .once("value", snap => {
+            if (snap.hasChild(this.boardId)) {
+              console.log(layout);
+              this.boardRef.update({
+                layout: JSON.stringify({ layout: layout })
+              });
+              this.setState({ layout });
+            }
+          });
+      }
+      // mount
+      this.setState({ layout });
     }
   }
 
@@ -255,7 +263,7 @@ export default class Board extends Component {
   }
 
   boardMode() {
-    boardRef.on("value", snapshot => {
+    this.boardRef.on("value", snapshot => {
       if (snapshot.val().mode === "Public") {
         this.setState({ mode: "Public" });
       } else {
@@ -291,7 +299,7 @@ export default class Board extends Component {
           src={require("./Images/contributions.png")}
           alt="Contribution tree"
           title="Contribution tree"
-          onClick={() => this.redirect("/contributionTree/" + boardId)}
+          onClick={() => this.redirect("/contributionTree/" + this.boardId)}
         />
       ) : null;
     };
@@ -305,7 +313,7 @@ export default class Board extends Component {
         }}
       >
         <Note
-          boardId={boardId}
+          boardId={this.boardId}
           canDelete={note.creator === userId}
           numberOfPeopleOnBoard={numberOfPeople}
           upvotes={note.upvotes}
@@ -317,7 +325,6 @@ export default class Board extends Component {
         />
       </div>
     ));
-
     if (redirect !== "") {
       return <Redirect to={redirect} />;
     } else if (mode === "Incognito" && !allowed.includes(userId)) {
@@ -344,7 +351,7 @@ export default class Board extends Component {
                 this.setState(byPropKey("boardName", e.target.value));
               }}
               onBlur={e => {
-                boardRef.update({ title: e.target.value });
+                this.boardRef.update({ title: e.target.value });
                 localStorage.setItem("boardName", e.target.value);
               }}
               value={boardName}
@@ -361,20 +368,20 @@ export default class Board extends Component {
             <SaveToMyBoards
               userId={userId}
               isVisitor={isVisitor}
-              boardId={boardId}
+              boardId={this.boardId}
             />
             <IncognitoMode
               mode={mode}
               userId={userId}
               imageModeName={imageModeName}
               canChangeMode={canChangeMode}
-              boardId={boardId}
+              boardId={this.boardId}
             />
           </div>
           <div className="listOfNotes">
             {loading ? (
               <LoaderBoard />
-            ) : (
+            ) : items.length === ListOfNotes.length ? (
               <Grid
                 {...this.props}
                 rowHeight={30}
@@ -388,7 +395,7 @@ export default class Board extends Component {
               >
                 {ListOfNotes}
               </Grid>
-            )}
+            ) : null}
           </div>
         </div>
       );
