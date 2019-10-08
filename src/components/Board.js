@@ -159,7 +159,6 @@ export default class Board extends Component {
     this.notesRef.on("child_added", snapshot => {
       let previousNotes = this.state.ListOfNotes;
       let previousItems = this.state.items;
-
       if (snapshot.val()) {
         previousNotes.push({
           id: snapshot.key,
@@ -171,20 +170,32 @@ export default class Board extends Component {
           isStatic: userId !== snapshot.val().creator,
           isEditable: userId === snapshot.val().creator
         });
+        previousItems.push({
+          i: snapshot.key,
+          x: 0,
+          y: 0,
+          minW: 3,
+          minH: 5,
+          maxW: 12,
+          w: 3,
+          h: 5
+        });
         previousNotes = _.uniqBy(previousNotes, "id"); //making sure notes are unique by id
+        previousItems = _.uniqBy(previousItems, "i");
         this.setState({
           ListOfNotes: previousNotes,
-          numberOfNotes: previousNotes.length
-          //   items: previousItems.concat({
-          //     i: snapshot.key,
-          //     x: 0,
-          //     y: 0,
-          //     minW: 3,
-          //     minH: 5,
-          //     maxW: 12,
-          //     w: 3,
-          //     h: 5
-          //   })
+          numberOfNotes: previousNotes.length,
+          items: previousItems
+          // items: previousItems.concat({
+          //   i: snapshot.key,
+          //   x: 0,
+          //   y: 0,
+          //   minW: 3,
+          //   minH: 5,
+          //   maxW: 12,
+          //   w: 3,
+          //   h: 5
+          // })
         });
       }
     });
@@ -224,7 +235,7 @@ export default class Board extends Component {
     this.notesRef.push({
       creator: userId,
       upvotes: 0,
-      date: date,
+      date,
       contents: "",
       color: colorNotes[Math.floor(Math.random() * 7)],
       isDraggable: true,
@@ -242,7 +253,7 @@ export default class Board extends Component {
           .once("value", snap => {
             if (snap.hasChild(this.boardId)) {
               this.boardRef.update({
-                layout: JSON.stringify({ layout: layout })
+                layout: JSON.stringify({ layout })
               });
               this.setState({ layout });
             }
@@ -255,8 +266,8 @@ export default class Board extends Component {
 
   onBreakpointChange(breakpoint, cols) {
     this.setState({
-      breakpoint: breakpoint,
-      cols: cols
+      breakpoint,
+      cols
     });
   }
 
@@ -290,8 +301,8 @@ export default class Board extends Component {
     const canChangeMode = creator === userId;
     const isVisitor = !canChangeMode;
     const imageModeName = mode === "Public" ? "witness.png" : "incognito.png";
-    const ContribututionTree = () => {
-      return mode === "Incognito" ? (
+    const ContribututionTree = mode =>
+      mode === "Incognito" ? (
         <img
           id="contributionTree"
           src={require("./Images/contributions.png")}
@@ -300,7 +311,6 @@ export default class Board extends Component {
           onClick={() => this.redirect("/contributionTree/" + this.boardId)}
         />
       ) : null;
-    };
 
     const ListOfNotes = this.state.ListOfNotes.map((note, index) => (
       <div
@@ -323,6 +333,7 @@ export default class Board extends Component {
         />
       </div>
     ));
+    console.log(ListOfNotes, items);
     if (redirect !== "") {
       return <Redirect to={redirect} />;
     } else if (mode === "Incognito" && !allowed.includes(userId)) {
