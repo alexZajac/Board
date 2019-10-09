@@ -1,114 +1,118 @@
+#Note-body {
+  position: absolute;
+  border-radius: 10px;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 95vw;
 
-#Note-body{
-    position: absolute;
-    border-radius: 10px; 
-    min-width:100%;
-    min-height:100%;
-    max-width: 95vw;
-    
-    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.4s;
-    transform-origin: center;
-    animation: Popz 0.2s;
-    background: rgba(0,0,0,0);
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.4s;
+  transform-origin: center;
+  animation: Popz 0.2s;
+  background: rgba(0, 0, 0, 0);
+}
+
+.wrapper-delete {
+  width: 100px;
+  height: 40px;
 }
 
 @keyframes Popz {
-    0%{
-        transform: scale(0);
-    }
-    60%{
-        transform: scale(1.2);
-    }
-    100%{
-        transform: scale(1);
-    }
-}
-
-#Note-body:hover{
-    transform: scale(0.98);
-}
-
-.colorNote{
-    border-radius: 10px 10px 0 0;
-    min-width: 100%;
-    position: relative;
-    height:65px;
-    border-bottom: solid 2px white;
-    transition: all ease-in-out 0.2s;
-    box-shadow: 0 10px 25px rgb(40, 40, 40);
-}
-
-#hiddenColor{
-    border: solid 5px rgba(0,0,0,0);
-    position: relative;
-}
-
-#mediumContentEditor{
-    position: relative;
-    top:0;
-    background: white;
-    padding:10px;
-    box-shadow: 0 10px 25px rgb(40, 40, 40);
-}
-
-#deleteImg{
-    width:25px;
-    height: auto;
-    position:absolute;
-    right:10px;
-    top:10px;
-    transition: all ease-in-out 0.2s;
-    cursor: pointer;
-}
-
-#deleteImg:hover{
-    transform: rotate(90deg);
-}
-
-#upvotedSection{
-    min-width: 100%;
-    border-radius: 0 0 10px 10px;
-    position: relative;
-    top:0;
-    height:40px;
-    color:black;
-    text-align: center;
-    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
-    border: solid 1px rgb(190, 190, 190);
-    background: rgb(230, 230, 230);
-    box-shadow: 0 10px 25px rgb(40, 40, 40);
-}
-
-#upvotedSection:hover{
-    background:white;
-}
-
-#likeImage{
-    cursor: pointer;
-    height:22px;   
-    left:50px;
-    position: absolute;
-    bottom:18%;
-    transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
-}
-
-#likeImage:hover{
+  0% {
+    transform: scale(0);
+  }
+  60% {
     transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-#likeCount{
-    font-family:'circular-medium';
-    font-size:20px;  
-    position: absolute;
-    left:10px;
-    top:15%;
+#Note-body:hover {
+  transform: scale(0.98);
 }
 
-#dateNote{
-    font-style: italic;
-    position: absolute;
-    right:15px;
-    top:20%;
-    font-family:'circular-medium';
-    color:gray;   
+.colorNote {
+  border-radius: 10px 10px 0 0;
+  min-width: 100%;
+  position: relative;
+  height: 65px;
+  border-bottom: solid 2px white;
+  transition: all ease-in-out 0.2s;
+  box-shadow: 0 10px 25px rgb(40, 40, 40);
+}
+
+#hiddenColor {
+  border: solid 5px rgba(0, 0, 0, 0);
+  position: relative;
+}
+
+#mediumContentEditor {
+  position: relative;
+  top: 0;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 10px 25px rgb(40, 40, 40);
+}
+
+#deleteImg {
+  width: 25px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+#deleteImg:hover {
+  transform: rotate(90deg);
+}
+
+#upvotedSection {
+  min-width: 100%;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  top: 0;
+  height: 40px;
+  color: black;
+  text-align: center;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  border: solid 1px rgb(190, 190, 190);
+  background: rgb(230, 230, 230);
+  box-shadow: 0 10px 25px rgb(40, 40, 40);
+}
+
+#upvotedSection:hover {
+  background: white;
+}
+
+#likeImage {
+  cursor: pointer;
+  height: 22px;
+  left: 50px;
+  position: absolute;
+  bottom: 18%;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.1s;
+}
+
+#likeImage:hover {
+  transform: scale(1.2);
+}
+
+#likeCount {
+  font-family: "circular-medium";
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: 15%;
+}
+
+#dateNote {
+  font-style: italic;
+  position: absolute;
+  right: 15px;
+  top: 20%;
+  font-family: "circular-medium";
+  color: gray;
 }

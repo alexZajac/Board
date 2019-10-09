@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 // require("c:/Users/Alexandre Zajac/Desktop/Programmation/Training/light-board/Board/src/config/firebase/auth");
 // require("c:/Users/Alexandre Zajac/Desktop/Programmation/Training/light-board/Board/src/config/firebase/database");
 // require("c:/Users/Alexandre Zajac/Desktop/Programmation/Training/light-board/Board/src/config/firebase/firestore");

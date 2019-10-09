@@ -203,7 +203,8 @@ export default class Board extends Component {
       let previousNotes = this.state.ListOfNotes;
       let previousItems = this.state.items;
       previousNotes = previousNotes.filter(note => note.id !== snapshot.key);
-      previousItems = previousItems.filter(item => item.id !== snapshot.key);
+      previousItems = previousItems.filter(item => item.i !== snapshot.key);
+
       this.setState({
         ListOfNotes: previousNotes,
         numberOfNotes: previousNotes.length,
@@ -333,7 +334,6 @@ export default class Board extends Component {
         />
       </div>
     ));
-    console.log(ListOfNotes, items);
     if (redirect !== "") {
       return <Redirect to={redirect} />;
     } else if (mode === "Incognito" && !allowed.includes(userId)) {

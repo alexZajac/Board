@@ -134,9 +134,10 @@ export default class Note extends Component {
     return substract + ", " + opacity + ")";
   }
 
-  deleteNote() {
+  deleteNote = () => {
+    console.log();
     notesRef.child(this.noteId).remove();
-  }
+  };
 
   render() {
     const {
@@ -150,22 +151,17 @@ export default class Note extends Component {
       ? (realColor = color.split(" "))
       : (realColor = ["black", "black"]); // prevent erros on early state
 
-    let DeleteComp = () => {
-      return null;
-    };
-    this.canDelete
-      ? (DeleteComp = () => {
-          return (
-            <img
-              id="deleteImg"
-              src={require("./Images/deleteNote.png")}
-              title="Delete note"
-              alt="Delete note"
-              onClick={this.deleteNote}
-            />
-          );
-        })
-      : null;
+    const DeleteComp = () =>
+      this.canDelete ? (
+        <div className="wrapper-delete" onClick={() => this.deleteNote()}>
+          <img
+            id="deleteImg"
+            src={require("./Images/deleteNote.png")}
+            title="Delete note"
+            alt="Delete note"
+          />
+        </div>
+      ) : null;
 
     const colorNote = {
       background:
